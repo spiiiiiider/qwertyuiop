@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <title>戰術地圖（圖層切換）</title>
+
+  <!-- Zen Old Mincho -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div id="map"></div>
+
+<div id="chartPanel" class="chart-panel">
+  <button id="chartToggle" class="chart-toggle">▼</button>
+
+  <div class="chart-content">
+    <img class="chart-img" src="maps/chart.png" alt="" />
+    <div id="hotspotLayer" class="chart-hotspots"></div>
+  </div>
+</div>
+
+
+
+  <!-- 右側人物資訊欄 -->
+  <aside id="sidebar" class="sidebar hidden">
+    <button id="sidebarClose" class="sidebar-close">×</button>
+    <div id="sidebarContent"></div>
+  </aside>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
