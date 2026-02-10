@@ -1,0 +1,167 @@
+/* =========================
+   全站基本設定 / 字體
+========================= */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "Zen Old Mincho", "Noto Serif TC", "Noto Serif JP", serif;
+  letter-spacing: 0.02em;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Leaflet 地圖容器一定要有明確高度 */
+#map {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Leaflet 元件也統一字體 */
+.leaflet-container,
+.leaflet-tooltip,
+.leaflet-control,
+.leaflet-popup {
+  font-family: "Zen Old Mincho", "Noto Serif TC", "Noto Serif JP", serif;
+}
+
+
+/* =========================
+   右側側邊欄（人物資訊）
+========================= */
+.sidebar{
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 320px;
+  max-width: 85vw;
+  height: 100vh;
+  background: rgba(255,255,255,0.96);
+  border-left: 1px solid rgba(0,0,0,0.15);
+  box-shadow: -8px 0 20px rgba(0,0,0,0.15);
+  z-index: 9999;
+  padding: 16px 14px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+.sidebar.hidden{ display:none; }
+
+.sidebar-close{
+  position:absolute;
+  top:8px;
+  right:10px;
+  width:32px;
+  height:32px;
+  border:0;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:20px;
+  background: rgba(0,0,0,0.08);
+}
+
+.sidebar-title{
+  font-size:18px;
+  font-weight:700;
+  margin: 36px 0 10px;
+}
+.sidebar-text{
+  font-size:14px;
+  line-height:1.6;
+  white-space: pre-wrap;
+}
+
+/* 側邊欄開啟時把地圖推開 */
+body.sidebar-open #map{
+  width: calc(100vw - 320px);
+}
+
+
+/* =========================
+   圖表面板（玻璃片）
+========================= */
+.chart-panel{
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+
+  width: min(1280px, calc(100vw - 24px));
+  height: 260px;
+
+  background: rgba(255,255,255,0.35);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+
+  z-index: 1200;
+  overflow: hidden;
+  transition: height 0.25s ease;
+}
+
+/* 收起後只剩把手高度 */
+.chart-panel.collapsed{
+  height: 34px !important;
+  width: 38px !important;
+}
+
+/* 左上角收合按鈕 */
+.chart-toggle{
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  width: 26px;
+  height: 22px;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  background: rgba(0,0,0,0.20);
+  color: rgba(255,255,255,0.95);
+  font-size: 14px;
+  line-height: 22px;
+  z-index: 3;
+}
+
+.chart-content{ /*玻璃片邊界*/
+  position: absolute;
+  left: 40px;
+  right: 0px;
+  top: 10px;
+  bottom: 10px;
+  overflow: hidden;
+}
+
+.chart-img{
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  transform: scale(0.245);   /* 圖片大小 */
+  transform-origin: top left;
+
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+/* 熱區層：蓋在圖片上 */
+.chart-hotspots{
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+/* 收合時：整個內容不顯示（就不會看到圖片） */
+.chart-panel.collapsed .chart-content{
+  display: none;
+}
+
+/* hover 提示框 */
+.chart-tip{
+  position: absolute;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: rgba(20,20,20,0.78);
+  color: #fff;
+  font-size: 12px;
+  pointer-events: none;
+  z-index: 1300;
+  white-space: nowrap;
+}
+.hidden{ display:none; }
